@@ -1,20 +1,20 @@
-import React, { ReactElement } from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import createEmotionCache from '../styles/createEmotionCache';
-import createEmotionServer from '@emotion/server/create-instance';
+import React, { ReactElement } from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import createEmotionCache from "../styles/createEmotionCache";
+import createEmotionServer from "@emotion/server/create-instance";
 
-import theme from '../styles/theme';
+import theme from "../styles/theme";
 
 class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang='ja'>
+      <Html lang="ja">
         <Head>
           {/* PWA primary color */}
-          <meta name='theme-color' content={theme.palette.primary.main} />
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <link
-            rel='stylesheet'
-            href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
         </Head>
         <body>
@@ -47,7 +47,7 @@ MyDocument.getInitialProps = async (ctx) => {
   const emotionStyles = extractCriticalToChunks(initialProps.html);
   const emotionStyleTags = emotionStyles.styles.map((style) => (
     <style
-      data-emotion={`${style.key} ${style.ids.join(' ')}`}
+      data-emotion={`${style.key} ${style.ids.join(" ")}`}
       key={style.key}
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: style.css }}
